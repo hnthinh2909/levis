@@ -1,0 +1,429 @@
+#levi-logo {
+  fill: #c41320;
+  width: 80px;
+  z-index: 10;
+}
+
+#search,
+#cart {
+  width: 18px;
+}
+
+*:focus {
+  outline: none;
+}
+
+.slick-next:before,
+.slick-prev:before {
+  color: #000 !important;
+}
+
+.header {
+  width: 100vw;
+  height: auto;
+  background-color: white;
+  position: fixed;
+}
+
+.header-medium {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  &-top {
+    width: 100vw;
+    height: auto;
+    font-size: 13px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 5px;
+    justify-items: center;
+    position: relative;
+    border-bottom: 1px solid #aaa;
+
+    &--slider {
+      grid-column-start: 2;
+      width: 100%;
+      max-width: 500px;
+      padding: 10px 5px;
+      text-align: center;
+    }
+
+    &--account {
+      display: flex;
+      position: absolute;
+      right: 100px;
+      top: 10px;
+    }
+
+    &--account > p {
+      margin-left: 15px;
+      font-size: 13px;
+      color: #6e6e6e !important;
+    }
+  }
+}
+
+.header {
+  &-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 100px;
+
+    &--menu {
+      flex: 0.3;
+      display: flex;
+      z-index: 4;
+      position: relative;
+
+      p {
+        margin-right: 30px;
+        font-weight: 500;
+        font-size: 15px;
+        cursor: pointer;
+      }
+
+      p::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 2px;
+        background: #000;
+        transition: width 0.3s;
+      }
+
+      p:hover::after {
+        width: 100%;
+        transition: ease-in 0.3s;
+      }
+    }
+
+    &--logo {
+      flex: 0.4;
+      display: flex;
+      justify-content: center;
+    }
+
+    &--module {
+      flex: 0.3;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+}
+
+// close icon
+
+.close-icon {
+  display: none;
+  width: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  animation: opacityX 0.5s;
+}
+
+.closeIcon {
+  display: block !important;
+  cursor: pointer;
+}
+
+// menu categories
+
+.menuActive {
+  border-bottom: 2px solid black;
+}
+
+p[class="activeMenu"]::after {
+  width: 100%;
+}
+
+.displayTitle {
+  visibility: visible !important;
+}
+
+.list-categories {
+  p {
+    display: inline-block;
+  }
+
+  li {
+    font-size: 30px;
+    font-weight: 600;
+    padding: 30px 0 0 100px;
+    list-style: none;
+  }
+
+  p::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transition: width 0.3s;
+  }
+
+  p:hover::after {
+    width: 100%;
+    transition: ease-in 0.3s;
+  }
+}
+
+.menu-layout {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 4;
+}
+
+.layoutDisplay {
+  display: block !important;
+}
+
+.menuDisplay {
+  z-index: 4;
+  width: 630px;
+  height: 100%;
+  background-color: white;
+  position: absolute;
+  left: 0;
+}
+
+.menuHidden {
+  z-index: 4;
+  width: 630px;
+  height: 100%;
+  background-color: white;
+  position: absolute;
+  left: -630px;
+}
+
+.fadeIn {
+  display: block !important;
+  position: absolute;
+  animation: fadeIn 0.5s;
+}
+
+.fadeOut {
+  display: block !important;
+  position: absolute;
+  animation: fadeOut 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    left: -630px;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: -630px;
+  }
+}
+
+@keyframes opacityX {
+  0% {
+    opacity: 0;
+  }
+
+  90% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+// cart
+
+.module {
+  &-right {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 0 50px;
+    border-bottom: 2px solid transparent;
+
+    &--titleCart {
+      margin: 0 !important;
+      z-index: 4;
+      visibility: hidden;
+    }
+  }
+
+  &-options {
+    display: flex;
+
+    > div {
+      margin-left: 20px;
+    }
+
+    &--search,
+    &--cart {
+      cursor: pointer;
+      transition: 0.2s;
+
+      :hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+.borderBottom {
+  border-bottom: 2px solid #aaa;
+  z-index: 4;
+  position: relative;
+}
+
+// .header-module div {
+//   margin-left: 30px;
+// }
+
+.hiddenSearch {
+  display: none;
+}
+
+.cart-layout {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+}
+
+.cartLayoutHover {
+  display: block !important;
+}
+
+.cart {
+  width: 610px;
+  height: 100%;
+  background-color: white;
+  position: absolute;
+  right: -650px;
+  top: 0;
+  border-left: 1px solid #aaa;
+  z-index: 3;
+
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.out-hover {
+  display: block;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cartDisplay {
+  right: 0;
+}
+
+.cartHidden {
+  right: -650px;
+}
+
+.cartFadeIn {
+  right: 0;
+  animation: cartFadeIn 0.5s;
+}
+
+.cartFadeOut {
+  right: -650px;
+  animation: cartFadeOut 0.5s;
+}
+
+@keyframes cartFadeIn {
+  from {
+    right: -650px;
+  }
+  to {
+    right: 0;
+  }
+}
+
+@keyframes cartFadeOut {
+  from {
+    right: 0;
+  }
+  to {
+    right: -650px;
+  }
+}
+
+// search
+
+.search-layout {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 4;
+}
+
+.layoutDisplay {
+  display: block !important;
+}
+
+.searchDisplay {
+  z-index: 4;
+  width: 100%;
+  height: 740px;
+  background-color: white;
+  position: absolute;
+  top: 0;
+}
+
+.searchHidden {
+  z-index: 4;
+  width: 100%;
+  height: 740px;
+  background-color: white;
+  position: absolute;
+  top: -740px;
+}
+
+.searchFadeIn {
+  display: block !important;
+  position: absolute;
+  animation: searchFadeIn 0.5s;
+}
+
+.searchFadeOut {
+  display: block !important;
+  position: absolute;
+  animation: searchFadeOut 0.5s;
+}
+
+@keyframes searchFadeIn {
+  from {
+    top: -740px;
+  }
+  to {
+    top: 0;
+  }
+}
+
+@keyframes searchFadeOut {
+  from {
+    top: 0;
+  }
+  to {
+    top: -740px;
+  }
+}

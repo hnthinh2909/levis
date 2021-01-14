@@ -1,0 +1,88 @@
+[
+  {
+    "brand": "SHOP",
+    "list": [
+      {
+        "name": "MEN",
+        "link": ""
+      },
+      {
+        "name": "WOMEN",
+        "link": ""
+      },
+      {
+        "name": "KIDS",
+        "link": ""
+      },
+      {
+        "name": "COLLECTIONS",
+        "link": ""
+      },
+      {
+        "name": "SECONDSHAND",
+        "link": ""
+      },
+      {
+        "name": "SALE",
+        "link": ""
+      }
+    ],
+    "activeMenu": false
+  },
+  {
+    "brand": "CUSTOMIZE",
+    "list": [
+      {
+        "name": "SHOP ALL",
+        "link": ""
+      },
+      {
+        "name": "JEANS & SHORTS",
+        "link": ""
+      },
+      {
+        "name": "JEAN JACKETS",
+        "link": ""
+      },
+      {
+        "name": "T-SHIRT & SWEATSHIRT",
+        "link": ""
+      },
+      {
+        "name": "TOTE BAGS",
+        "link": ""
+      },
+      {
+        "name": "VISIT A LEVI'S TAILOR SHOP",
+        "link": ""
+      }
+    ],
+    "activeMenu": false
+  },
+  {
+    "brand": "DISCOVER",
+    "list": [
+      {
+        "name": "SUSTAINABILITY",
+        "link": ""
+      },
+      {
+        "name": "BLOG: OFF THE CUFF",
+        "link": ""
+      },
+      {
+        "name": "OUR VALUES",
+        "link": ""
+      },
+      {
+        "name": "JEANS GUIDE",
+        "link": ""
+      },
+      {
+        "name": "VISIT A LEVI'S TAILOR SHOP",
+        "link": ""
+      }
+    ],
+    "activeMenu": false
+  }
+]
