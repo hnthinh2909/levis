@@ -1,0 +1,41 @@
+.products-details {
+  display: flex;
+  margin-top: 25px;
+}
+
+.details {
+  &-img img {
+    width: 130px;
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+
+    > p {
+      margin-bottom: 7px;
+    }
+
+    &--name {
+      font-weight: 500;
+    }
+
+    &--material {
+      color: rgb(119, 119, 119);
+      font-size: 15px;
+    }
+
+    &--quantity {
+      display: flex;
+
+      > p {
+        margin-right: 15px;
+      }
+    }
+
+    &--subtotal {
+      margin-top: 25px;
+    }
+  }
+}

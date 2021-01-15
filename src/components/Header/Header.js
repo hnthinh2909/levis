@@ -5,6 +5,8 @@ import CloseIcon from '../../assets/icon/x.svg'
 import './Header.scss';
 import DataMenu from '../../datas/MenuData.json';
 import { spring } from "react-flip-toolkit";
+import CartBar from '../CartBar/CartBar';
+import Search from '../Search/Search';
 
 const settings = {
     infinite: true,
@@ -41,7 +43,8 @@ const Header = () => {
     const [searchFadeOut, setSearchFadeOut] = useState(false);
     const [searchDisplay, setSearchDisplay] = useState(false);
     const [searchHidden, setSearchHidden] = useState(false);
-
+    const [layoutSearch, setLayoutSearch] = useState(false);
+    const [hiddenClose, setHiddenClose] = useState(false);
 
     const openMenu = (item) => {
         const cloneData = DataMenu;
@@ -102,6 +105,7 @@ const Header = () => {
             return;
         } else {
             setTimeout(() => {
+                setHiddenClose(true);
                 setHiddenSearch(true);
             }, 100);
             setTimeout(() => {
@@ -121,6 +125,7 @@ const Header = () => {
             return;
         } else {
             setTimeout(() => {
+                setHiddenClose(false);
                 setHiddenSearch(false);
             }, 250);
             setTimeout(() => {
@@ -138,18 +143,33 @@ const Header = () => {
     }
 
     const openSearch = () => {
-        if (layoutDisplay === true) {
+        if (layoutSearch === true) {
             return;
 
         } else {
-
+            console.log("Open");
+            setLayoutSearch(true);
+            setSearchHidden(false);
             setSearchDisplay(true);
+            setSearchFadeOut(false);
             setSearchFadeIn(true);
         }
     }
 
     const closeSearch = () => {
-        console.log("Close");
+        if (layoutSearch === false) {
+            return;
+
+        } else {
+            console.log("Close");
+            setSearchDisplay(false);
+            setSearchHidden(true);
+            setSearchFadeIn(false);
+            setSearchFadeOut(true);
+            setTimeout(() => {
+                setLayoutSearch(false);
+            }, 550);
+        }
     }
 
     useEffect(()=> {
@@ -226,17 +246,28 @@ const Header = () => {
                         </svg>
                     </div>
                     <div className="header-bottom--module">
-                        <div className={classNames("module-right", {borderBottom})}>
-                            <div className={classNames("module-right--titleCart", {displayTitle})}>
-                                <p>YOUR BAG</p>
-                            </div>
+                        <div className={classNames("module-right")}>
                             <div className="module-options">
-                                <div className={classNames("module-options--search", {hiddenSearch})} onClick={openSearch}>
-                                    <svg viewBox="0 0 17 17" id="search">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M7 6a4 4 0 108 0 4 4 0 00-8 0zm.524 4.89A6 6 0 106.11 9.477L.944 14.642a1 1 0 001.414 1.414l5.165-5.164z"></path>
-                                    </svg>
-                                </div>
+                                {
+                                    layoutSearch ?
+                                    (
+                                        <div className={classNames("module-options--close", {hiddenClose})} onClick={closeSearch}>
+                                            <svg fill="none" viewBox="0 0 14 14" id="close">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" 
+                                                    d="M2.291.877A1 1 0 10.877 2.291L5.586 7 .89 11.695a1 1 0 101.414 1.414L7 8.414l4.695 4.695a1 1 0 001.414-1.414L8.414 7l4.709-4.709A1 1 0 0011.709.877L7 5.586 2.291.877z" fill="currentColor"></path>
+                                            </svg>
+                                        </div>
+                                    )
+                                    :
+                                    (
+                                        <div className={classNames("module-options--search", {hiddenSearch})} onClick={openSearch}>
+                                            <svg viewBox="0 0 17 17" id="search">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M7 6a4 4 0 108 0 4 4 0 00-8 0zm.524 4.89A6 6 0 106.11 9.477L.944 14.642a1 1 0 001.414 1.414l5.165-5.164z"></path>
+                                            </svg>
+                                        </div>
+                                    )
+                                }
                                 <div className="module-options--cart" onMouseOver={hoverCart}>
                                     <svg viewBox="0 0 18 18" id="cart">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -247,7 +278,7 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
-                <div className={classNames('menu-layout', {layoutDisplay})}>
+                <div className={classNames('menu-layout', {layoutDisplay})} onMouseOver={outHover}>
                     <div className={classNames({menuHidden}, {menuDisplay}, {fadeIn}, {fadeOut})}>
                         <ul className="list-categories" ref={containerRef}>
                                 {
@@ -263,15 +294,17 @@ const Header = () => {
                 </div>
                 <div className={classNames('cart-layout', {cartLayoutHover})}>
                     <div className={classNames("cart", {cartFadeIn}, {cartDisplay}, {cartFadeOut}, {cartHidden})} onMouseOver={hoverCart}>
+                        <CartBar/>
                     </div>
                     <div className="out-hover" onMouseOver={outHover}>
                         {/*<h2>Out hover</h2>*/}
                     </div>
                 </div>
-                <div className="search-layout">
-                    <div className={classNames("search", {layoutDisplay}, {searchFadeIn}, {searchFadeOut}, {searchDisplay}, {searchHidden})}>
+                <div className={classNames("search-layout", {layoutSearch})} onMouseOver={outHover}>
+                    <div className={classNames("search", {searchFadeIn}, {searchFadeOut}, {searchDisplay}, {searchHidden})}>
+                        <Search/>
                     </div>
-                    <div className="out-hover" onClick={closeSearch}> 
+                    <div className="out-hover" onClick={closeSearch} > 
                         {/*<h2>Out hover</h2>*/}
                     </div>
                 </div>

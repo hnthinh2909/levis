@@ -1,0 +1,37 @@
+.cartbar {
+  padding: 60px 100px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+
+  &-title {
+    font-weight: 600;
+    margin-bottom: 15px;
+    flex: 0.1;
+  }
+
+  &-product {
+    padding-top: 20px;
+    border-top: 1px solid #aaa;
+    flex: 3;
+    overflow-y: auto;
+  }
+
+  &-subtotal {
+    flex: 0.2;
+    border-top: 1px solid #aaa;
+
+    &--estimated {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 0;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px 0;
+      font-size: 18px;
+    }
+  }
+}
